@@ -12,6 +12,7 @@ def findOriginalArray(self, changed: List[int]) -> List[int]:
     for i in changed:
         if frequency.get(i, 0) > 0 and frequency.get(i*2, 0) > 0:
             ans.append(i)
+            
             frequency[i] -= 1
             frequency[i*2] -= 1
     return ans if not any(frequency.values()) else []
