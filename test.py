@@ -1,15 +1,17 @@
-from typing import *
+class Solution:
+    def subArraySum(self, arr, n, s):
+        start = end = currentSum = 0
 
+        while end < n or currentSum >= s:
+            if currentSum == s:
+                return [start+1, end+1]
 
-def countFrequency(n: int, m: int, edges: List[List[int]]):
-    nums = [0] * n
-    for i in edges:
-        if i <= n:
-            nums[i-1] += 1
+            while currentSum > s:
+                currentSum -= arr[start]
+                start += 1
 
-    return nums
+            if end < n:
+                currentSum += arr[end]
 
-
-n, m = map(int, input().split(" "))
-arr = list(map(int, input().split(" ")))
-print(countFrequency(n,m,arr))
+            end += 1
+        return [-1]
