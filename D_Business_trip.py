@@ -1,21 +1,16 @@
-def solver(k, days):
-    count = 0
-    sum_increase = 0
-    days.sort(reverse=True)
-
-    for i in days:
-        if sum_increase >= k:
-            return count
-
-        sum_increase += i
-        count += 1
-
-    return -1
-
-
 k = int(input())
+gr = list(map(int, input().split()))
 
-days = [int(num) for num in input().split(" ")]
+gr.sort(reverse=True)
 
+m = 0
+cg = 0
 
-print(solver(k, days))
+while  cg < k and  m < 12:
+     cg +=  gr[ m]
+     m += 1
+
+if  cg >= k:
+    print( m)
+else:
+    print(-1)
